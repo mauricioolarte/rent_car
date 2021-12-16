@@ -34,13 +34,14 @@ pipeline{
             }
 
 			
-			stage('Static Code Analysis') {
-    			steps{
-        			sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:rent.car-mauricio.olarte', 
-        			sonarName:'CeibaADN-RentCar(mauricio.olarte)', 
-        			sonarPathProperties:'./sonar-project.properties')
-    			}
-			}
+			stage('Sonar Analysis'){
+			 	steps{
+			 		echo '------------>Analisis de código estático<------------'
+			 		  withSonarQubeEnv('Sonar') {
+                         sh "${tool name: 'SonarScanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dsonar.projectKey=co.com.ceiba.adn:rentcar.mauricio.olarte -Dsonar.projectName=co.com.ceiba.adn:CeibaADN-RentCar(mauricio.olarte) -Dproject.settings=./sonar-project.properties"
+                      }
+			 	}
+			 }
 
 			// stage('compilar build '){
             //     steps {
