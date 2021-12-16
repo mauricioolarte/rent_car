@@ -1,5 +1,3 @@
-@Library('ceiba-jenkins-library') _
-
 pipeline{
 	
 		agent any
@@ -38,7 +36,7 @@ pipeline{
 			 	steps{
 			 		echo '------------>Analisis de código estático<------------'
 			 		  withSonarQubeEnv('Sonar') {
-                         sh "${tool name: 'SonarScanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dsonar.projectKey=co.com.ceiba.adn:rentcar.mauricio.olarte -Dsonar.projectName=co.com.ceiba.adn:CeibaADN-RentCar(mauricio.olarte) -Dproject.settings=./sonar-project.properties"
+                         sh "${tool name: 'SonarScanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dsonar.projectKey=co.com.ceiba.adn:rentcar.mauricio.olarte -Dsonar.projectName=co.com.ceiba.adn:CeibaADN-RentCar.mauricio.olarte -Dproject.settings=./sonar-project.properties"
                       }
 			 	}
 			 }
