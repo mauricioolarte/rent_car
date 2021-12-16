@@ -43,11 +43,11 @@ pipeline{
     			}
 			}
 
-			stage('compilar build '){
-                steps {
-                    sh 'npm run build'					
-				}
-            }
+			// stage('compilar build '){
+            //     steps {
+            //         sh 'npm run build'					
+			// 	}
+            // }
 
 		}
 		post {
