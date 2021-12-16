@@ -16,7 +16,7 @@ pipeline{
 			}
 		
 		
-			stage('compilar '){
+			stage('install dependencies '){
                 steps {
                     sh 'npm i'
                     sh 'npm run build'					
@@ -41,7 +41,14 @@ pipeline{
         			sonarName:'CeibaADN-RentCar(mauricio.olarte)', 
         			sonarPathProperties:'./sonar-project.properties')
     			}
-			} 
+			}
+
+			stage('compilar build '){
+                steps {
+                    sh 'npm run build'					
+				}
+            }
+
 		}
 		post {
 			failure {
