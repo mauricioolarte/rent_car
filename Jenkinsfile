@@ -57,7 +57,7 @@ pipeline{
 
 			success {
 			echo 'This will run only if successful'
-			junit 'test-results/*.xml' //RUTA DE TUS ARCHIVOS .XML
+			junit 'test-results.xml' //RUTA DE TUS ARCHIVOS .XML
 			}
 		}
 		
