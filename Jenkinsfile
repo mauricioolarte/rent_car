@@ -1,22 +1,33 @@
 pipeline{
 	
-		agent any
+		agent {
+		label 'Slave_Induccion'
+		}
 	
         
+		triggers {
+        pollSCM('@hourly')
+		}
+	
+		options {
+			buildDiscarder(logRotator(numToKeepStr: '5'))
+			disableConcurrentBuilds()
+		}
 		
 		stages{
 		
 			stage('Checkout') {
 				steps {
                 echo '------------>Checkout desde Git Microservicio<------------'
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], gitTool: 'Default' , submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'GitHub_mauricioolarte', url: 'https://github.com/mauricioolarte/rent_car']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], gitTool: 'Default' , submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'GitHub_mauricioolarte', url: 'https://github.com/mauricioolarte/rent_car']]])
 				}
 			}
 		
 		
-			stage('install dependencies '){
+			stage('compilar '){
                 steps {
                     sh 'npm i'
+                    sh 'npm run build'					
 				}
             }
             stage('test '){
@@ -25,43 +36,28 @@ pipeline{
 				}
             }
 
-			// stage('test e2e'){
-            //     steps {
-            //         sh 'npm run test:e2e'					
-			// 	}
-            // }
-
 			
 			stage('Sonar Analysis'){
 			 	steps{
 			 		echo '------------>Analisis de código estático<------------'
 			 		  withSonarQubeEnv('Sonar') {
-                         sh "${tool name: 'SonarScanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dsonar.projectKey=co.com.ceiba.adn:rentcar.mauricio.olarte -Dsonar.projectName=co.com.ceiba.adn:CeibaADN-RentCar.mauricio.olarte -Dproject.settings=./sonar-project.properties"
+                         sh "${tool name: 'SonarScanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dproject.settings=./sonar-project.properties"
                       }
 			 	}
-			}
-
-
-			// stage('compilar build '){
-            //     steps {
-            //         sh 'npm run build'					
-			// 	}
-            // }
+			 }
 
 		}
 		post {
+			success {
+				mail(to: 'mauricio.olarte@ceiba.com.co',
+				body:"Build success in Jenkins: Project: ${env.JOB_NAME} Build /n Number: ${env.BUILD_NUMBER} URL de build: ${env.BUILD_NUMBER}",
+				subject: "SUCCESSFULL CI: ${env.JOB_NAME}")
+			}
 			failure {
 				mail(to: 'mauricio.olarte@ceiba.com.co',
 				body:"Build failed in Jenkins: Project: ${env.JOB_NAME} Build /n Number: ${env.BUILD_NUMBER} URL de build: ${env.BUILD_NUMBER}/n/nPlease go to ${env.BUILD_URL} and verify the build",
 				subject: "ERROR CI: ${env.JOB_NAME}")
 			}
-
-		// 	success {
-		// 	echo 'This will run only if successful'
-		// 	junit 'test-report/*.xml' //RUTA DE TUS ARCHIVOS .XML
-		// 	}
-		}
-		
-	
+		}	
 			
 }
