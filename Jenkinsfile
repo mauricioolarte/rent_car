@@ -60,7 +60,7 @@ pipeline{
 		// 	echo 'This will run only if successful'
 		// 	junit 'test-report/*.xml' //RUTA DE TUS ARCHIVOS .XML
 		// 	}
-		// }
+		}
 		
 	
 			
