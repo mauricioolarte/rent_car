@@ -44,8 +44,7 @@ pipeline{
 
 			stage('Static Code Analysis') {
 				steps{
-					sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:rentcar.mauricio.olarte', 
-					sonarName:'CeibaADN-rentcar(mauricio.olarte)', 
+					sonarqubeMasQualityGatesP(
 					sonarPathProperties:'./sonar-project.properties')
 				}
 			} 
