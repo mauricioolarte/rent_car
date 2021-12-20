@@ -56,11 +56,11 @@ pipeline{
 				subject: "ERROR CI: ${env.JOB_NAME}")
 			}
 
-			success {
-			echo 'This will run only if successful'
-			junit 'test-report/*.xml' //RUTA DE TUS ARCHIVOS .XML
-			}
-		}
+		// 	success {
+		// 	echo 'This will run only if successful'
+		// 	junit 'test-report/*.xml' //RUTA DE TUS ARCHIVOS .XML
+		// 	}
+		// }
 		
 	
 			
