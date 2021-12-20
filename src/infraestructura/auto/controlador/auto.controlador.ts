@@ -24,7 +24,7 @@ export class AutoControlador {
 
   @Get(':id')
   findOne(@Param('id') id: string): Promise<AutoDto> {
-      return this._manejadorListarAuto.ejecutarById(parseInt(id));
+      return this._manejadorListarAuto.ejecutarById(id);
   }
   
 }
