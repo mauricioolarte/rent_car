@@ -46,7 +46,6 @@ pipeline{
 			 	}
 			 }
 
-		}
 		post {
 			success {
 				mail(to: 'mauricio.olarte@ceiba.com.co',
