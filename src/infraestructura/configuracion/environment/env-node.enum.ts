@@ -1,4 +1,16 @@
 export enum NodeEnv {
   DEVELOPMENT='development',
   PRODUCTION='production',
+  DATABASE_PASSWORD='XMfdx7T;qW[#',
+  DATABASE_TYPE='mysql',
+  DATABASE_HOST='localhost',
+  DATABASE_PORT='3306',
+  DATABASE_USER='app_user',
+  DATABASE_NAME='rent_car',
+  TYPEORM_ENTITIES_DIR='dist/**/*.entidad{.ts,.js}',
+  TYPEORM_MIGRATIONS_DIR='dist/infraestructura/migraciones/*.js',
+  TYPEORM_MIGRATIONS_TABLENAME='migration_history',
+  TYPEORMCLI_MIGRATIONS_DIR='src/infraestructura/migraciones',
+  APPLICATION_CONTEXT_PATH='api',
+  APPLICATION_PORT=3000,
 }
