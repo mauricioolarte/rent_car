@@ -5,21 +5,21 @@ pipeline{
 		}
 	
         
-		triggers {
-        pollSCM('@hourly')
-		}
-	
 		options {
 			buildDiscarder(logRotator(numToKeepStr: '5'))
 			disableConcurrentBuilds()
 		}
+
+		tools {
+			jdk 'JDK8_Centos' //Verisión preinstalada en la Configuración del Master
+		}
+
 		
-		stages{
 		
 			stage('Checkout') {
 				steps {
                 echo '------------>Checkout desde Git Microservicio<------------'
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], gitTool: 'Default' , submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'GitHub_mauricioolarte', url: 'https://github.com/mauricioolarte/rent_car']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], gitTool: 'Default' , submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'GitHub_mauricioolarte', url: 'https://github.com/mauricioolarte/rent_car']]])
 				}
 			}
 		
