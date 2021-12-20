@@ -15,14 +15,8 @@ pipeline{
 		}
 
 		
-		
-			stage('Checkout') {
-				steps {
-                echo '------------>Checkout desde Git Microservicio<------------'
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], gitTool: 'Default' , submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'GitHub_mauricioolarte', url: 'https://github.com/mauricioolarte/rent_car']]])
-				}
-			}
-		
+		stages {
+	
 		
 			stage('compilar '){
                 steps {
@@ -45,7 +39,7 @@ pipeline{
                       }
 			 	}
 			 }
-
+		}
 		post {
 			success {
 				mail(to: 'mauricio.olarte@ceiba.com.co',
