@@ -17,7 +17,7 @@ export class DaoAutoMysql implements DaoAuto {
     );
   }
 
-  async listarById(id:number): Promise<AutoDto> {
+  async listarById(id:string): Promise<AutoDto> {
     return this.entityManager.query(
       `SELECT a.id, a.placa, a.tipo, a.modelo, a.color, a.precioDia FROM AUTO a where a.id = ${id}`,
     );

@@ -37,6 +37,6 @@ export class Reserva {
   }
 
   set valor(newValor: number){
-      this.#valor = newValor
+      this.#valor = newValor;
   }
 }

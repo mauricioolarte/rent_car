@@ -11,7 +11,7 @@ export class ManejadorListarAuto {
     return this._daoAuto.listar();
   }
 
-  async ejecutarById(id:number): Promise<AutoDto> {
+  async ejecutarById(id:string): Promise<AutoDto> {
     return this._daoAuto.listarById(id);
   }
 }

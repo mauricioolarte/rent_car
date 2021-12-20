@@ -21,25 +21,26 @@ export class DaoReservaMysql implements DaoReserva {
 
   async listarByUsuarioId(id: string): Promise<ReservaDto[]> {
     return this.entityManager.query(
-      `SELECT r.idusuario, r.idauto, r.fechainicio, r.fechaentrega, r.valor FROM RESERVA r WHERE r.idusuario=${id} `,
+      `SELECT r.idusuario, r.idauto, r.fechainicio, r.fechaentrega, r.valor FROM RESERVA r WHERE
+       r.idusuario=${id} `,
     );
   }
 
   async isDisponible(id: string, fechIni: string, fechEntr: string): Promise<ReservaDto[]> {
 
-    return await this.entityManager.query(
+    return this.entityManager.query(
       `SELECT r.idusuario, r.idauto, r.fechainicio, r.fechaentrega, r.valor FROM RESERVA r WHERE 
-    r.idauto=${id} and ((r.fechainicio>=\'${fechIni}\' and r.fechainicio<=\'${fechEntr}\' ) or (r.fechaentrega>=\'${fechIni}\' and r.fechaentrega<=\'${fechEntr}\' ) or (r.fechainicio<=\'${fechIni}\' and r.fechaentrega>=\'${fechEntr}\') )`,
+    r.idauto=${id} and ((r.fechainicio>=\'${fechIni}\' and r.fechainicio<=\'${fechEntr}\' )
+    or (r.fechaentrega>=\'${fechIni}\' and r.fechaentrega<=\'${fechEntr}\' ) or (r.fechainicio<=\'${fechIni}\'
+    and r.fechaentrega>=\'${fechEntr}\') )`,
     );
   }
   // and r.fechainicio<=${fechEntr})
   // r.idauto=${id} and or (r.fechaentrega>=${fechIni} and r.fechaentrega<=${fechEntr}) or (r.fechainicio<=${fechIni} and r.fechaentrega>=${fechEntr})
 
   async precioDia(id: string): Promise<ReservaPrecioDiaDto> {
-    return await this.entityManager.query(
+    return this.entityManager.query(
       `SELECT DISTINCT(a.precioDia) FROM RESERVA r RIGHT JOIN AUTO a ON a.id=r.idauto WHERE a.id=${id}`
     );
   }
 }
-
-// and ((r.fechainicio>=${fechIni} and r.fechaentrega<=${fechEntr}) or (r.fechaentrega>=${fechIni} and r.fechaentrega<=${fechEntr}) or (r.fechainicio<=${fechIni} and r.fechaentrega>=${fechEntr}))
