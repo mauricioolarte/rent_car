@@ -12,6 +12,5 @@ describe('Auto', () => {
     expect(auto.modelo).toEqual(2021);
     expect(auto.color).toEqual('blanco');
     expect(auto.precioDia).toEqual(20000);
-    
   });
 });
