@@ -41,11 +41,11 @@ pipeline{
 			 	}
 			 }
 
-			// stage('compilar build '){
-            //     steps {
-            //         sh 'npm run build'					
-			// 	}
-            // }
+			stage('compilar build '){
+                steps {
+                    sh 'npm run build'					
+				}
+            }
 
 		}
 		post {
@@ -57,7 +57,7 @@ pipeline{
 
 			success {
 			echo 'This will run only if successful'
-			junit 'test-results.xml' //RUTA DE TUS ARCHIVOS .XML
+			junit 'test-report/*.xml' //RUTA DE TUS ARCHIVOS .XML
 			}
 		}
 		
