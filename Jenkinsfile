@@ -1,4 +1,3 @@
-@Library('ceiba-jenkins-library') _
 pipeline{
 	
 		agent any
@@ -26,35 +25,28 @@ pipeline{
 				}
             }
 
-			stage('test e2e'){
-                steps {
-                    sh 'npm run test:e2e'					
-				}
-            }
+			// stage('test e2e'){
+            //     steps {
+            //         sh 'npm run test:e2e'					
+			// 	}
+            // }
 
 			
-			// stage('Sonar Analysis'){
-			//  	steps{
-			//  		echo '------------>Analisis de código estático<------------'
-			//  		  withSonarQubeEnv('Sonar') {
-            //              sh "${tool name: 'SonarScanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dsonar.projectKey=co.com.ceiba.adn:rentcar.mauricio.olarte -Dsonar.projectName=co.com.ceiba.adn:CeibaADN-RentCar.mauricio.olarte -Dproject.settings=./sonar-project.properties"
-            //           }
-			//  	}
-			//  }
-
-			stage('Static Code Analysis') {
-				steps{
-					sonarqubeMasQualityGatesP(
-					sonarPathProperties:'./sonar-project.properties')
-				}
-			} 
+			stage('Sonar Analysis'){
+			 	steps{
+			 		echo '------------>Analisis de código estático<------------'
+			 		  withSonarQubeEnv('Sonar') {
+                         sh "${tool name: 'SonarScanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dsonar.projectKey=co.com.ceiba.adn:rentcar.mauricio.olarte -Dsonar.projectName=co.com.ceiba.adn:CeibaADN-RentCar.mauricio.olarte -Dproject.settings=./sonar-project.properties"
+                      }
+			 	}
+			}
 
 
-			stage('compilar build '){
-                steps {
-                    sh 'npm run build'					
-				}
-            }
+			// stage('compilar build '){
+            //     steps {
+            //         sh 'npm run build'					
+			// 	}
+            // }
 
 		}
 		post {
