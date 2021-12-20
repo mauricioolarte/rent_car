@@ -2,10 +2,9 @@ import { ServicioRegistrarReserva } from 'src/dominio/reserva/servicio/servicio-
 import { Reserva } from 'src/dominio/reserva/modelo/reserva';
 import { RepositorioReserva } from 'src/dominio/reserva/puerto/repositorio/repositorio-reserva';
 import { SinonStubbedInstance } from 'sinon';
-import { createStubObj } from '../../../util/create-object.stub';
+import { createStubObj } from '../../../../util/create-object.stub';
 import { DaoReserva } from 'src/dominio/reserva/puerto/dao/dao-reserva';
 import {ReservaDto} from 'src/aplicacion/reserva/consulta/dto/reserva.dto'
-import { date } from '@hapi/joi';
 
 
 describe('ServicioRegistrarReserva', () => {

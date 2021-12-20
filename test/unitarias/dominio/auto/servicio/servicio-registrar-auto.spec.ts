@@ -2,8 +2,7 @@ import { ServicioRegistrarAuto } from 'src/dominio/auto/servicio/servicio-regist
 import { Auto } from 'src/dominio/auto/modelo/auto';
 import { RepositorioAuto } from 'src/dominio/auto/puerto/repositorio/repositorio-auto';
 import { SinonStubbedInstance } from 'sinon';
-import { createStubObj } from '../../../util/create-object.stub';
-
+import { createStubObj } from '../../../../util/create-object.stub';
 
 describe('ServicioRegistrarAuto', () => {
 

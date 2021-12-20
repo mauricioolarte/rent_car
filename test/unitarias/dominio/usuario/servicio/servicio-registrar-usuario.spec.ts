@@ -2,7 +2,7 @@ import { ServicioRegistrarUsuario } from 'src/dominio/usuario/servicio/servicio-
 import { Usuario } from 'src/dominio/usuario/modelo/usuario';
 import { RepositorioUsuario } from 'src/dominio/usuario/puerto/repositorio/repositorio-usuario';
 import { SinonStubbedInstance } from 'sinon';
-import { createStubObj } from '../../../util/create-object.stub';
+import { createStubObj } from '../../../../util/create-object.stub';
 
 
 describe('ServicioRegistrarUsuario', () => {
