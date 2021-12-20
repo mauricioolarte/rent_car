@@ -12,15 +12,17 @@ export class RepositorioAutoMysql implements RepositorioAuto {
     private readonly repositorio: Repository<AutoEntidad>,
   ) {}
 
-  // async existeNombreUsuario(nombre: string): Promise<boolean> {
-  //   return (await this.repositorio.count({ nombre })) > 0;
-  // }
+  async existeAuto(placa: string): Promise<boolean> {
+    return (await this.repositorio.count({ placa })) > 0;
+  }
 
   async guardar(auto: Auto) {
     const entidad = new AutoEntidad();
+    entidad.placa = auto.placa;
     entidad.tipo = auto.tipo;
     entidad.modelo = auto.modelo;
     entidad.color = auto.color;
+    entidad.precioDia = auto.precioDia;
     await this.repositorio.save(entidad);
   }
 }

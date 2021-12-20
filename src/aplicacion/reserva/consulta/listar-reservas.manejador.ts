@@ -10,4 +10,7 @@ export class ManejadorListarReserva {
   async ejecutar(): Promise<ReservaDto[]> {
     return this._daoReserva.listar();
   }
+  async ejecutarById(id:string): Promise<ReservaDto[]> {
+    return this._daoReserva.listarByUsuarioId(id);
+  }
 }

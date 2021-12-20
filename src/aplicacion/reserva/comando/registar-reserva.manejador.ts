@@ -3,9 +3,11 @@ import { ServicioRegistrarReserva } from 'src/dominio/reserva/servicio/servicio-
 import { ComandoRegistrarReserva } from './registrar-reserva.comando';
 import { Reserva } from 'src/dominio/reserva/modelo/reserva';
 
+
 @Injectable()
 export class ManejadorRegistrarReserva {
-  constructor(private _servicioRegistrarReserva: ServicioRegistrarReserva) {}
+  constructor(private _servicioRegistrarReserva: ServicioRegistrarReserva,
+    ) {}
 
   async ejecutar(comandoRegistrarReserva: ComandoRegistrarReserva) {
     await this._servicioRegistrarReserva.ejecutar(
@@ -14,6 +16,7 @@ export class ManejadorRegistrarReserva {
         comandoRegistrarReserva.idAuto,
         comandoRegistrarReserva.fechaInicio,
         comandoRegistrarReserva.fechaEntrega,
+        comandoRegistrarReserva.valor,
       ),
     );
   }

@@ -5,6 +5,9 @@ export class AutoDto {
   @ApiProperty({ example: 1 })
   id: number;
 
+  @ApiProperty({ example: 'ABC123' })
+  placa: string;
+  
   @ApiProperty({ example: 'Suv' })
   tipo: string;
 
@@ -13,5 +16,8 @@ export class AutoDto {
 
   @ApiProperty({ example: 'blanco' })
   color: string;
+
+  @ApiProperty({ example: 20000 })
+  precioDia: number;
 
 }

@@ -10,4 +10,8 @@ export class ManejadorListarAuto {
   async ejecutar(): Promise<AutoDto[]> {
     return this._daoAuto.listar();
   }
+
+  async ejecutarById(id:number): Promise<AutoDto> {
+    return this._daoAuto.listarById(id);
+  }
 }

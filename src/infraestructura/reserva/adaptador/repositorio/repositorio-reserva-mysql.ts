@@ -12,9 +12,6 @@ export class RepositorioReservaMysql implements RepositorioReserva {
     private readonly repositorio: Repository<ReservaEntidad>,
   ) {}
 
-  // async existeNombreUsuario(nombre: string): Promise<boolean> {
-  //   return (await this.repositorio.count({ nombre })) > 0;
-  // }
 
   async guardar(reserva: Reserva) {
     const entidad = new ReservaEntidad();
@@ -22,6 +19,8 @@ export class RepositorioReservaMysql implements RepositorioReserva {
     entidad.idAuto = reserva.idAuto;
     entidad.fechaInicio = reserva.fechaInicio;
     entidad.fechaEntrega = reserva.fechaEntrega;
+    entidad.valor = reserva.valor;
+
 
     await this.repositorio.save(entidad);
   }

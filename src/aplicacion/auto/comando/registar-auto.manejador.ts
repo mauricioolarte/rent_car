@@ -10,9 +10,12 @@ export class ManejadorRegistrarAuto {
   async ejecutar(comandoRegistrarAuto: ComandoRegistrarAuto) {
     await this._servicioRegistrarAuto.ejecutar(
       new Auto(
+        comandoRegistrarAuto.placa,
         comandoRegistrarAuto.tipo,
         comandoRegistrarAuto.modelo,
         comandoRegistrarAuto.color,
+        comandoRegistrarAuto.precioDia,
+
       ),
     );
   }

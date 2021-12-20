@@ -6,6 +6,9 @@ export class AutoEntidad {
   id: number;
 
   @Column()
+  placa: string;
+
+  @Column()
   tipo: string;
 
   @Column()
@@ -13,4 +16,7 @@ export class AutoEntidad {
 
   @Column()
   color: string;
+
+  @Column()
+  precioDia: number;
 }

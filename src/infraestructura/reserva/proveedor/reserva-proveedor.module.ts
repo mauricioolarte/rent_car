@@ -13,7 +13,7 @@ import { ReservaEntidad } from '../entidad/reserva.entidad';
 @Module({
   imports: [TypeOrmModule.forFeature([ReservaEntidad])],
   providers: [
-    { provide: ServicioRegistrarReserva, inject: [RepositorioReserva], useFactory: servicioRegistrarReservaProveedor },
+    { provide: ServicioRegistrarReserva, inject: [RepositorioReserva, DaoReserva], useFactory: servicioRegistrarReservaProveedor },
     repositorioReservaProvider,
     daoReservaProvider,
     ManejadorRegistrarReserva,

@@ -4,12 +4,16 @@ export class Reserva {
   readonly #idAuto: number;
   readonly #fechaInicio: Date;
   readonly #fechaEntrega: Date;
+  #valor: number;
 
-  constructor(idUsuario: number, idAuto: number, fechaInicio: Date, fechaEntrega: Date) {
+
+  constructor(idUsuario: number, idAuto: number, fechaInicio: Date, fechaEntrega: Date, valor: number) {
     this.#idUsuario = idUsuario;
     this.#idAuto = idAuto;
     this.#fechaInicio = fechaInicio;
     this.#fechaEntrega = fechaEntrega;
+    this.#valor = valor;
+
   }
 
   get idUsuario(): number {
@@ -21,10 +25,18 @@ export class Reserva {
   }
 
   get fechaInicio(): Date {
-    return this.#fechaEntrega;
+    return this.#fechaInicio;
   }
 
   get fechaEntrega(): Date {
     return this.#fechaEntrega;
+  }
+
+  get valor(): number {
+    return this.#valor;
+  }
+
+  set valor(newValor: number){
+      this.#valor = newValor
   }
 }

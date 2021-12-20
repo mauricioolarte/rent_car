@@ -13,7 +13,13 @@ export class DaoAutoMysql implements DaoAuto {
 
   async listar(): Promise<AutoDto[]> {
     return this.entityManager.query(
-      'SELECT a.id, a.tipo, a.modelo, a.color FROM AUTO a',
+      'SELECT a.id, a.placa, a.tipo, a.modelo, a.color, a.precioDia FROM AUTO a',
+    );
+  }
+
+  async listarById(id:number): Promise<AutoDto> {
+    return this.entityManager.query(
+      `SELECT a.id, a.placa, a.tipo, a.modelo, a.color, a.precioDia FROM AUTO a where a.id = ${id}`,
     );
   }
 }

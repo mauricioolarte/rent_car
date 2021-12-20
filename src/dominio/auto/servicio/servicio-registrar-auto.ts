@@ -8,6 +8,11 @@ export class ServicioRegistrarAuto {
   }
 
   async ejecutar(auto: Auto) {
+    if (await this._repositorioAuto.existeAuto(auto.placa)) {
+      throw new ErrorDeNegocio(
+        `El auto ${auto.placa} ya existe`,
+      );
+    }
     await this._repositorioAuto.guardar(auto);
   }
 }

@@ -16,4 +16,7 @@ export class ReservaEntidad {
 
   @Column()
   fechaEntrega: Date;
+
+  @Column()
+  valor: number;
 }

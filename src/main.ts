@@ -20,7 +20,6 @@ async function bootstrap() {
     .setTitle('Bloque Arquitectura Hexagonal Node')
     .setDescription('Bloque que hace uso de Nest.js para la creación de API\'s con Node.js')
     .setVersion('1.0')
-    .setBasePath('/')
     .build();
 
   const swaggerDocument = SwaggerModule.createDocument(app, swaggerOptions);

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UsePipes, ValidationPipe } from '@nestjs/common';
 import { ComandoRegistrarAuto } from 'src/aplicacion/auto/comando/registrar-auto.comando';
 import { ManejadorRegistrarAuto } from 'src/aplicacion/auto/comando/registar-auto.manejador';
 import { ManejadorListarAuto } from 'src/aplicacion/auto/consulta/listar-autos.manejador';
@@ -21,4 +21,10 @@ export class AutoControlador {
   async listar(): Promise<AutoDto[]> {
     return this._manejadorListarAuto.ejecutar();
   }
+
+  @Get(':id')
+  findOne(@Param('id') id: string): Promise<AutoDto> {
+      return this._manejadorListarAuto.ejecutarById(parseInt(id));
+  }
+  
 }
